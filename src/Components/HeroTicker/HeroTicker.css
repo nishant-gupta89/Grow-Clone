@@ -1,0 +1,95 @@
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  background-color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* पहली इमेज जैसा चौड़ा ट्रैक (बिना बॉर्डर और ग्रे बैकग्राउंड के) */
+.wide-ticker-wrapper {
+  width: 820px;
+  max-width: 95%;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-bottom: 14px;
+  position: relative;
+  /* बाएँ और दाएँ किनारों पर हल्का धुंधला (Fade) इफ़ेक्ट */
+  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+}
+
+/* लगातार चलने वाली लाइन */
+.wide-ticker-track {
+  display: flex;
+  width: max-content;
+  animation: smoothLineLoop 25s linear infinite;
+}
+
+.wide-ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  padding-right: 20px;
+}
+
+.t-name {
+  font-weight: 500;
+  color: #535665;
+}
+
+.t-price {
+  color: #7c7e8c;
+}
+
+.t-change.green {
+  color: #00b386;
+  font-weight: 500;
+}
+
+.t-change.red {
+  color: #eb5b3c;
+  font-weight: 500;
+}
+
+.t-separator {
+  color: #e0e0e0;
+  margin-left: 14px;
+}
+
+/* बिना रुके सीधी लाइन में चलने वाला एनीमेशन */
+@keyframes smoothLineLoop {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.main-heading {
+  font-size: 58px;
+  font-weight: 700;
+  color: #44475b;
+  margin: 0 0 26px 0;
+  letter-spacing: -1px;
+}
+
+.cta-button {
+  background-color: #00b386;
+  color: #ffffff;
+  border: none;
+  padding: 15px 38px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.cta-button:hover {
+  background-color: #009c74;
+}
