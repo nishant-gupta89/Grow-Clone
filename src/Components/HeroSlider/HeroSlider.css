@@ -1,0 +1,110 @@
+/* ऊपर वाले कंटेनर की अतिरिक्त ऊँचाई और पैडिंग खत्म करें */
+.groww-hero-section,
+.slider-container,
+.hero-section {
+  width: 100%;
+  padding-top: 25px !important;
+  padding-bottom: 0px !important;
+  margin-bottom: 0px !important;
+  min-height: auto !important;
+  height: auto !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  overflow-x: hidden;
+}
+
+/* 1. चलती हुई टिकर लाइन और हेडिंग के बीच का गैप घटाएँ */
+.wide-ticker-wrapper,
+.ticker-wrapper {
+  width: 820px;
+  max-width: 95%;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-bottom: 6px !important; /* टिकर के ठीक नीचे सिर्फ़ 6px का गैप */
+  position: relative;
+  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+}
+
+.wide-ticker-track {
+  display: flex;
+  width: max-content;
+  animation: smoothLineLoop 25s linear infinite;
+}
+
+.wide-ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  padding-right: 20px;
+}
+
+.t-name { font-weight: 500; color: #535665; }
+.t-price { color: #7c7e8c; }
+.t-change.green { color: #00b386; font-weight: 500; }
+.t-change.red { color: #eb5b3c; font-weight: 500; }
+.t-separator { color: #e0e0e0; margin-left: 14px; }
+
+@keyframes smoothLineLoop {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+/* 2. मुख्य हेडिंग: Groww Your Wealth (ऊपर का मार्जिन ज़ीरो) */
+.hero-main-title,
+h1 {
+  font-size: 60px !important;
+  font-weight: 700 !important;
+  color: #44475b !important;
+  margin-top: 0px !important;
+  margin-bottom: 20px !important;
+  line-height: 1.15 !important;
+  letter-spacing: -1.2px;
+  position: relative;
+  z-index: 10;
+}
+
+/* 3. Get Started बटन */
+.hero-start-btn,
+.cta-button {
+  background-color: #00b386 !important;
+  color: #ffffff !important;
+  border: none !important;
+  padding: 14px 38px !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  cursor: pointer;
+  margin-top: 0px !important;
+  margin-bottom: 10px !important;
+  position: relative;
+  z-index: 10;
+}
+
+.hero-start-btn:hover {
+  background-color: #009c74 !important;
+}
+
+/* 4. नीचे वाली शहर की इमेज */
+.hero-bottom-image,
+.hero-image-box {
+  width: 100%;
+  max-width: 1050px;
+  margin-top: -10px !important;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-bottom-image img,
+.hero-image-box img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
