@@ -10,23 +10,42 @@ import TrustedSection from './Components/TrustedSection/TrustedSection'
 import FamilySection from './Components/Family/FamilySection'
 import LanguageSection from './Components/Language/LanguageSection'
 import Footer from './Components/Footer/Footer'
+import { Routes, Route } from 'react-router-dom'
+import IntradayScreener from './Pages/IntradayScreener/IntradayScreener'
+import ETFScreener from './Pages/EtfScreener/ETFScreener'
+import IpoDashboard from './Pages/Ipo Dashboard/IpoDashboard'
+
 
 
 
 export const App = () => {
   return (
     <div>
-      <Navbar/>
-      <HeroTicker/>
-     <HeroSlider/>
-    <Investment/>
-    <SipSection/>
-    <Explore/>
-   <TradingSection/>
-   <TrustedSection/>
-   <FamilySection/>
-   <LanguageSection/>
-   <Footer/>
+      <Navbar />
+
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+           
+              <HeroTicker />
+              <HeroSlider />
+              <Investment />
+              <SipSection />
+              <Explore />
+              <TradingSection />
+              <TrustedSection />
+              <FamilySection />
+              <LanguageSection />
+              <Footer />
+            </>
+          }
+        />
+        <Route path="/intraday" element={<IntradayScreener />} />
+        <Route path="/etf-screener" element={<ETFScreener/>} /> 
+        <Route path="/ipo" element={<IpoDashboard/>}/>
+      </Routes>
     </div>
   )
 }
