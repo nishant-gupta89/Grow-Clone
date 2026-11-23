@@ -1,0 +1,118 @@
+.lang-circle-section {
+  width: 100%;
+  min-height: 90vh;
+  background-color: #ffffff;
+  padding: 70px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+.lang-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.lang-header h2 {
+  font-size: 38px;
+  font-weight: 600;
+  color: #44475b;
+  margin: 0 0 14px 0;
+  letter-spacing: -0.5px;
+}
+
+.youtube-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #44475b;
+}
+
+.yt-icon {
+  background-color: #ff0000;
+  color: #ffffff;
+  font-size: 10px;
+  padding: 3px 7px;
+  border-radius: 5px;
+}
+
+/* कार्ड्स का सर्कुलर (Circular Arc) स्टेज */
+.circle-cards-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  padding: 30px 10px 60px 10px;
+  perspective: 1000px;
+}
+
+/* हर एक कार्ड का डिजाइन और स्मूथ सर्कल ट्रांजिशन */
+.lang-arc-card {
+  width: 215px;
+  height: 290px;
+  border-radius: 22px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.4s ease;
+  user-select: none;
+}
+
+.lang-arc-card:hover,
+.active-circle-card {
+  box-shadow: 0 22px 45px rgba(0, 0, 0, 0.14);
+}
+
+.card-top-text h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.card-visual-area {
+  width: 100%;
+  height: 140px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.landmark-graphic {
+  font-size: 72px;
+  opacity: 0.85;
+  transition: transform 0.5s ease;
+}
+
+.lang-arc-card:hover .landmark-graphic {
+  transform: scale(1.12) translateY(-5px);
+}
+
+/* मोबाइल और टैबलेट के लिए */
+@media (max-width: 1024px) {
+  .circle-cards-stage {
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+  .lang-arc-card {
+    transform: none !important;
+    width: 180px;
+    height: 240px;
+  }
+}
+
+@media (max-width: 600px) {
+  .lang-header h2 {
+    font-size: 26px;
+  }
+}
