@@ -14,6 +14,7 @@ import { Routes, Route } from 'react-router-dom'
 import IntradayScreener from './Pages/IntradayScreener/IntradayScreener'
 import ETFScreener from './Pages/EtfScreener/ETFScreener'
 import IpoDashboard from './Pages/Ipo Dashboard/IpoDashboard'
+import Mtf from './Pages/MTFs/Mtf'
 
 
 
@@ -45,6 +46,7 @@ export const App = () => {
         <Route path="/intraday" element={<IntradayScreener />} />
         <Route path="/etf-screener" element={<ETFScreener/>} /> 
         <Route path="/ipo" element={<IpoDashboard/>}/>
+        <Route path="/mtf" element={<Mtf/>}/>
       </Routes>
     </div>
   )
