@@ -1,0 +1,181 @@
+
+.etf-page {
+  width: 100%;
+  padding: 25px 2%;
+  background: #fff;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  color: #444;
+}
+
+.etf-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.etf-heading h2 {
+  font-size: 23px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.etf-refresh {
+  border: none;
+  background: transparent;
+  font-size: 22px;
+  color: #888;
+  cursor: pointer;
+}
+
+.etf-filters {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex-wrap: wrap;
+  margin-bottom: 35px;
+}
+
+.filter-icon {
+  width: 41px;
+  height: 41px;
+  border: 1px solid #ddd;
+  background: white;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.etf-filter {
+  padding: 11px 17px;
+  border: 1px solid #e5e5e5;
+  border-radius: 25px;
+  background: white;
+  color: #444;
+  font-size: 12px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.etf-filter:hover,
+.etf-filter.active {
+  border-color: #444;
+  background: #f7f7f7;
+}
+
+.clear-filter {
+  border: none;
+  border-bottom: 1px dashed #777;
+  background: transparent;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 5px 0;
+}
+
+.etf-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #e8e8e8;
+  border-radius: 16px;
+}
+
+.etf-table {
+  width: 100%;
+  min-width: 1050px;
+  border-collapse: collapse;
+  text-align: center;
+  font-size: 13px;
+}
+
+.etf-table thead {
+  background: #f6f6f6;
+}
+
+.etf-table th {
+  padding: 17px 12px;
+  color: #888;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.etf-table td {
+  padding: 23px 12px;
+  white-space: nowrap;
+}
+
+.etf-table tbody tr {
+  height: 77px;
+  border-bottom: 1px solid #f3f3f3;
+}
+
+.etf-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.etf-company {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  text-align: left;
+}
+
+.etf-company strong {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.etf-logo {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.etf-chart {
+  width: 100px;
+  height: 35px;
+}
+
+.negative {
+  color: #ff5630;
+}
+
+.positive {
+  color: #00b386;
+}
+
+.etf-table small {
+  display: block;
+  margin-top: 5px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.no-etf {
+  padding: 35px !important;
+  color: #888;
+}
+
+@media (max-width: 768px) {
+  .etf-page {
+    padding: 20px 12px;
+  }
+
+  .etf-heading h2 {
+    font-size: 20px;
+  }
+
+  .etf-filters {
+    gap: 7px;
+    margin-bottom: 25px;
+  }
+
+  .etf-filter {
+    padding: 9px 12px;
+  }
+}

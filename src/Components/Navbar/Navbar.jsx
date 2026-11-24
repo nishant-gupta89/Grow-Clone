@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
-import groww from '../../assets/groww_logo (1).webp';
+import groww from "../../assets/groww_logo (1).webp";
 
 function Navbar() {
   const [activeMenu, setActiveMenu] = useState("");
@@ -37,33 +38,33 @@ function Navbar() {
 
   const menuData = {
     Stocks: [
-      ["Intraday", "Monitor top intraday performers in real time"],
-      ["ETF Screener", "Find and explore ETFs"],
-      ["IPO", "Track upcoming and ongoing IPOs"],
-      ["MTFs", "Buy now, pay later"],
-      ["Stock Screener", "Filter stocks based on RSI, PE ratio and more"],
-      ["Stock Events", "Dividends, bonus, buybacks and more"],
-      ["Demat Account", "Begin your stock market journey"],
-      ["Share Market Today", "Live news updates from stock market"],
+      ["Intraday", "Monitor top intraday performers in real time", "/intraday"],
+      ["ETF Screener", "Find and explore ETFs", "/etf-screener"],
+      ["IPO", "Track upcoming and ongoing IPOs", "/ipo"],
+      ["MTFs", "Buy now, pay later", "/"],
+      ["Stock Screener", "Filter stocks based on RSI, PE ratio and more", "/"],
+      ["Stock Events", "Dividends, bonus, buybacks and more", "/"],
+      ["Demat Account", "Begin your stock market journey", "/"],
+      ["Share Market Today", "Live news updates from stock market", "/"],
     ],
     "F&O": [
-      ["Indices", "Track markets across the globe"],
-      ["Terminal", "Track charts, orders, positions, watchlists in one place"],
-      ["Option Chain", "Analyse chains, view payoffs, create baskets"],
-      ["Pledge", "Get extra balance for trading"],
-      ["Commodities", "Trade in Crude Oil, Gold, Silver and more"],
-      ["API Trading", "Set up and execute trades through our API"],
+      ["Indices", "Track markets across the globe", "/"],
+      ["Terminal", "Track charts, orders, positions, watchlists in one place", "/"],
+      ["Option Chain", "Analyse chains, view payoffs, create baskets", "/"],
+      ["Pledge", "Get extra balance for trading", "/"],
+      ["Commodities", "Trade in Crude Oil, Gold, Silver and more", "/"],
+      ["API Trading", "Set up and execute trades through our API", "/"],
     ],
     "Mutual Funds": [
-      ["Explore Mutual Funds", "Explore funds for your goals"],
-      ["SIP", "Invest regularly"],
-      ["Top Funds", "Explore popular mutual funds"],
-      ["Fund Screener", "Compare mutual funds"],
+      ["Explore Mutual Funds", "Explore funds for your goals", "/"],
+      ["SIP", "Invest regularly", "/"],
+      ["Top Funds", "Explore popular mutual funds", "/"],
+      ["Fund Screener", "Compare mutual funds", "/"],
     ],
     More: [
-      ["About Groww", "Learn more about Groww"],
-      ["Calculators", "Explore financial calculators"],
-      ["Help & Support", "Get help"],
+      ["About Groww", "Learn more about Groww", "/"],
+      ["Calculators", "Explore financial calculators", "/"],
+      ["Help & Support", "Get help", "/"],
     ],
   };
 
@@ -107,9 +108,9 @@ function Navbar() {
     <>
       <nav className="groww-navbar">
         <div className="navbar-top">
-          <div className="groww-logo">
+          <Link to="/" className="groww-logo" onClick={() => setActiveMenu("")}>
             <img src={groww} alt="groww-logo" />
-          </div>
+          </Link>
 
           <div className="navbar-links">
             {["Stocks", "F&O", "Mutual Funds", "More"].map((item) => (
@@ -164,10 +165,16 @@ function Navbar() {
 
             <div className="dropdown-items">
               {menuData[activeMenu]?.map((item, index) => (
-                <div className="dropdown-link" key={index}>
+                <Link
+                  to={item[2] || "/"}
+                  className="dropdown-link"
+                  key={index}
+                  onClick={() => setActiveMenu("")}
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
                   <h4>{item[0]}</h4>
                   <p>{item[1]}</p>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
@@ -249,110 +256,71 @@ function Navbar() {
                   </button>
 
                   {loginStep === 1 ? (
-                    <>
+                    <div className="login-step-box">
                       <h2>Welcome to Groww</h2>
-
-                      <button className="google-btn">
-                        <span className="g-icon">G</span> Continue with Google
-                      </button>
-
-                      <div className="divider">
-                        <span>Or</span>
+                      <div className="input-group">
+                        <label>Your Email Address</label>
+                        <input
+                          type="email"
+                          placeholder="Enter email address"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          onKeyDown={(e) => e.key === "Enter" && handleEmailContinue()}
+                        />
                       </div>
-
-                      <input
-                        type="email"
-                        placeholder="Your Email Address"
-                        className="email-input"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        onKeyDown={(e) => e.key === "Enter" && handleEmailContinue()}
-                      />
-
-                      {error && <p className="modal-error-text">{error}</p>}
-
+                      {error && <p className="error-msg">{error}</p>}
                       <button className="continue-btn" onClick={handleEmailContinue}>
                         Continue
                       </button>
-
-                      <p className="terms-text">
-                        By proceeding, I agree to <u>T&C</u>, <u>Privacy Policy</u> & <u>Tariff Rates</u>
-                      </p>
-                    </>
+                    </div>
                   ) : (
-                    <div className="join-groww-wrapper">
-                      <h2>Join Groww</h2>
-
-                      <div className="join-field-group">
-                        <label className="green-field-label">Your Email Address</label>
-                        <div className="join-field-row">
-                          <span className="join-email-display">{email}</span>
+                    <div className="login-step-box">
+                      <h2>Enter Password</h2>
+                      <p className="user-email-display">{email}</p>
+                      <div className="input-group">
+                        <label>Password</label>
+                        <div className="password-wrapper">
+                          <input
+                            type={showPassword ? "text" : "password"}
+                            placeholder="Enter password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            onKeyDown={(e) => e.key === "Enter" && handlePasswordSubmit()}
+                          />
+                          <span
+                            className="toggle-pass"
+                            onClick={() => setShowPassword(!showPassword)}
+                          >
+                            {showPassword ? "Hide" : "Show"}
+                          </span>
                         </div>
                       </div>
-                  {/* Set Password */}
-                  <div className="join-field-group active-green-border">
-                    <label className="green-field-label">Set Password</label>
-                    <div className="join-field-row">
-                      <input
-                        type={showPassword ? "text" : "password"}
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        onKeyDown={(e) => e.key === "Enter" && handlePasswordSubmit()}
-                        className="join-pass-input"
-                        autoFocus
-                      />
+
+                      <div className="password-rules">
+                        <p className={password.length >= 8 ? "valid" : ""}>• At least 8 characters</p>
+                        <p className={/[A-Z]/.test(password) ? "valid" : ""}>• One uppercase letter</p>
+                        <p className={/[a-z]/.test(password) ? "valid" : ""}>• One lowercase letter</p>
+                        <p className={/[0-9]/.test(password) ? "valid" : ""}>• One number</p>
+                        <p className={/[@$!%*?&]/.test(password) ? "valid" : ""}>• One special character (@$!%*?&)</p>
+                      </div>
+
                       <button
-                        type="button"
-                        className="pass-eye-btn"
-                        onClick={() => setShowPassword(!showPassword)}
-                        title={showPassword ? "Hide Password" : "Show Password"}
+                        className="continue-btn"
+                        disabled={!isPasswordValid}
+                        onClick={handlePasswordSubmit}
                       >
-                        {showPassword ? (
-                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
-                            <line x1="1" y1="1" x2="23" y2="23" />
-                          </svg>
-                        ) : (
-                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                            <circle cx="12" cy="12" r="3" />
-                          </svg>
-                        )}
+                        Submit
                       </button>
                     </div>
-                  </div>
-
-                  {/* Password Rule Box */}
-                  <div className={`password-rule-box ${isPasswordValid ? "valid-rule" : ""}`}>
-                    <span className="shield-check-icon">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                        <polyline points="9 12 11 14 15 10" />
-                      </svg>
-                    </span>
-                    <p>
-                      Password must be min. 8 characters, with uppercase, lowercase, number &amp; special characters (@$!%*?&amp;)
-                    </p>
-                  </div>
-
-                  {/* Submit Button */}
-                  <button
-                    className={`join-submit-btn ${isPasswordValid ? "btn-enabled" : ""}`}
-                    disabled={!isPasswordValid}
-                    onClick={handlePasswordSubmit}
-                  >
-                    Submit
-                  </button>
+                  )}
                 </div>
-              )}
-            </div>
-          </>
-        )}
-      </div>
-    </div>
-  )}
-</>
-);
+              </>
+            )}
+          </div>
+        </div>
+      )}
+    </>
+  );
 }
 
 export default Navbar;
