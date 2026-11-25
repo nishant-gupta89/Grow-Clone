@@ -41,7 +41,7 @@ function Navbar() {
       ["Intraday", "Monitor top intraday performers in real time", "/intraday"],
       ["ETF Screener", "Find and explore ETFs", "/etf-screener"],
       ["IPO", "Track upcoming and ongoing IPOs", "/ipo"],
-      ["MTFs", "Buy now, pay later", "/"],
+      ["MTFs", "Buy now, pay later", "/mtf"],
       ["Stock Screener", "Filter stocks based on RSI, PE ratio and more", "/"],
       ["Stock Events", "Dividends, bonus, buybacks and more", "/"],
       ["Demat Account", "Begin your stock market journey", "/"],
